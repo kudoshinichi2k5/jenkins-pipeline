@@ -1,0 +1,23 @@
+# 1. Thư mục chứa plugin của Terraform (Rất nặng và rác)
+.terraform/
+
+# 2. File trạng thái (State file) - CHỨA DỮ LIỆU NHẠY CẢM
+# Dù bạn đang dùng S3 backend, nhưng vẫn nên chặn file này để phòng hờ lỡ tay tạo local
+*.tfstate
+*.tfstate.backup
+
+# 3. File biến số chứa bí mật (Secret Variables)
+# File này thường chứa Access Key, Secret Key nếu bạn lỡ viết vào
+terraform.tfvars
+*.auto.tfvars
+
+# 4. KHÓA SSH (QUAN TRỌNG NHẤT)
+# Chặn tất cả các file đuôi .pem để không ai lấy được chìa khóa vào server của bạn
+*.pem
+
+# 5. File crash log của Terraform (nếu có lỗi)
+crash.log
+
+# 6. Các thư mục IDE (VS Code, IntelliJ...)
+.vscode/
+.idea/
